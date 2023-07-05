@@ -36,6 +36,12 @@ impl FFIString {
     }
 }
 
+impl Default for FFIString {
+    fn default() -> Self {
+        FFIString::new(String::default())
+    }
+}
+
 impl PartialEq for FFIString {
     fn eq(&self, other: &Self) -> bool {
         self.as_str() == other.as_str()
@@ -99,6 +105,12 @@ impl FFIOneKiloByte {
     }
 }
 
+impl Default for FFIOneKiloByte {
+    fn default() -> Self {
+        Self { values: [0; 128] }
+    }
+}
+
 impl PartialOrd for FFIOneKiloByte {
     fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
         self.as_i64().partial_cmp(&other.as_i64())
@@ -135,6 +147,12 @@ impl F128 {
 
 // This is kind of hacky, but we know we only have normal comparable floats in there.
 impl Eq for F128 {}
+
+impl Default for F128 {
+    fn default() -> Self {
+        F128::new(0)
+    }
+}
 
 // Goal is similar code-gen between Rust and C++
 // - Rust https://godbolt.org/z/3YM3xenPP
