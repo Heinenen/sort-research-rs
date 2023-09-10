@@ -24,6 +24,8 @@ glidesort = { version = "0.1.2", features = ["unstable"], optional = true }
 crumsort = { version = "0.1", optional = true }
 tiny_sort = { version = "1.0", optional = true }
 ips4o_rs = { path = "../ips4o_rs", optional = true }
+v2ips4o_rs = { path = "../v2ips4o_rs", package = "ips4o_rs"}
+v3ips4o_rs = { path = "../v3ips4o_rs", package = "ips4o_rs"}
 sort_test_tools = { path = "sort_test_tools", default-features = false }
 
 [dev-dependencies]
