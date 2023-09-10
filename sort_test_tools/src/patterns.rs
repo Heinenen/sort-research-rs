@@ -240,6 +240,22 @@ pub fn random_init_seed() -> u64 {
     }
 }
 
+
+pub fn random_s_x_percent(len: usize, percent: f64) -> Vec<i32> {
+    assert!(percent > 0.0 && percent < 100.0);
+    let mut rng = rand::rngs::StdRng::from(new_seed());
+
+    let len_random_p = (percent / 100.0 * len as f64) as usize;
+
+    let mut v: Vec<i32> = ascending(len);
+    let random_v = random(len_random_p);
+    let random_i = rand::seq::index::sample(&mut rng, len, len_random_p);
+    for i in 0..len_random_p {
+        v[random_i.index(i)] = random_v[i];
+    }
+    v
+}
+
 // --- Private ---
 
 fn new_seed() -> StdRng {

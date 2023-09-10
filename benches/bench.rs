@@ -9,7 +9,9 @@ use criterion::{black_box, criterion_group, criterion_main, Criterion};
 #[allow(unused_imports)]
 use sort_test_tools::ffi_types::{FFIOneKiloByte, FFIString, F128};
 
-use sort_test_tools::patterns;
+use sort_test_tools::patterns::{self, random_s_x_percent};
+
+// use sort_test_tools::patterns;
 
 #[allow(unused_imports)]
 use sort_comp::{stable, unstable};
@@ -176,7 +178,6 @@ fn bench_patterns<T: Ord + std::fmt::Debug>(
         ("random", patterns::random),
         ("random_z1", |len| patterns::random_zipf(len, 1.0)),
         ("random_d20", |len| patterns::random_uniform(len, 0..20)),
-        ("random_p5", |len| random_x_percent(len, 5.0)),
         ("random_s95", |len| patterns::random_sorted(len, 95.0)),
         ("ascending", patterns::ascending),
         ("descending", patterns::descending),
@@ -300,8 +301,29 @@ fn bench_patterns<T: Ord + std::fmt::Debug>(
         ("random_d256", |len| patterns::random_uniform(len, 0..256)),
         ("random_d512", |len| patterns::random_uniform(len, 0..512)),
         ("random_d1024", |len| patterns::random_uniform(len, 0..1024)),
+        
+        ("random_p_s1", |len| random_s_x_percent(len, 1.0)),
+        ("random_p_s2", |len| random_s_x_percent(len, 2.0)),
+        ("random_p_s4", |len| random_s_x_percent(len, 4.0)),
+        ("random_p_s5", |len| random_s_x_percent(len, 5.0)),
+        ("random_p_s6", |len| random_s_x_percent(len, 6.0)),
+        ("random_p_s8", |len| random_s_x_percent(len, 8.0)), 
+        ("random_p_s10", |len| random_s_x_percent(len, 10.0)),
+        ("random_p_s15", |len| random_s_x_percent(len, 15.0)),
+        ("random_p_s20", |len| random_s_x_percent(len, 20.0)),
+        ("random_p_s30", |len| random_s_x_percent(len, 30.0)),
+        ("random_p_s40", |len| random_s_x_percent(len, 40.0)),
+        ("random_p_s50", |len| random_s_x_percent(len, 50.0)),
+        ("random_p_s60", |len| random_s_x_percent(len, 60.0)),
+        ("random_p_s70", |len| random_s_x_percent(len, 70.0)),
+        ("random_p_s80", |len| random_s_x_percent(len, 80.0)),
+        ("random_p_s90", |len| random_s_x_percent(len, 90.0)),
+        ("random_p_s95", |len| random_s_x_percent(len, 95.0)),
+        ("random_p_s99", |len| random_s_x_percent(len, 99.0)),
+        
         ("random_p1", |len| random_x_percent(len, 1.0)),
         ("random_p2", |len| random_x_percent(len, 2.0)),
+        ("random_p5", |len| random_x_percent(len, 5.0)),
         ("random_p4", |len| random_x_percent(len, 4.0)),
         ("random_p6", |len| random_x_percent(len, 6.0)),
         ("random_p8", |len| random_x_percent(len, 8.0)),
