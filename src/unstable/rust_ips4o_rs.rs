@@ -25,15 +25,15 @@ impl<T, F> Ips4oSortBy<T> for F {
     }
 }
 
-impl<T: Ord + Clone + Debug + Default> Ips4oSort for T {
+impl<T: Ord + Clone + Debug + Default + Copy + Send + Sync> Ips4oSort for T {
     fn sort(data: &mut [Self]) {
         ips4o_rs::sort(data);
     }
 }
 
-impl<T: Clone + Debug + Default, F: Fn(&T, &T) -> Ordering> Ips4oSortBy<T> for F {
+impl<T: Clone + Debug + Default + Copy, F: Fn(&T, &T) -> Ordering> Ips4oSortBy<T> for F {
     fn sort_by(data: &mut [T], compare: Self) {
-        ips4o_rs::sort_by(data, compare)
+        // ips4o_rs::sort_by(data, compare);
     }
 } 
 

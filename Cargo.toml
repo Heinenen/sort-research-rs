@@ -68,7 +68,7 @@ default = [
     # "cpp_simdsort",
     # "cpp_vqsort",
     # "cpp_intel_avx512",
-    # "cpp_ips4o",
+    "cpp_ips4o",
     # "cpp_blockquicksort",
     # "cpp_gerbens_qsort",
     # "c_crumsort",

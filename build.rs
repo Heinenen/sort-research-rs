@@ -4,6 +4,7 @@ use std::path::PathBuf;
 // Adjust this if you have a custom clang build, or path.
 #[allow(unused)]
 const CLANG_PATH: &'static str = "clang++";
+const GCC_PATH: &'static str = "g++-10";
 
 #[allow(dead_code)]
 fn build_and_link_cpp_sort(
@@ -34,6 +35,7 @@ fn build_and_link_cpp_sort(
     let mut builder = cc::Build::new();
 
     builder
+        .compiler(GCC_PATH)
         .file(file_path)
         .cpp(true)
         .warnings(false) // The thirdparties just have too many.
@@ -41,6 +43,7 @@ fn build_and_link_cpp_sort(
         .flag_if_supported("/Zc:__cplusplus")
         .flag_if_supported("/std:c++20")
         .flag_if_supported("-std=c++20")
+        .flag("-std=c++20")
         .flag_if_supported("-fdiagnostics-color=always")
         .force_frame_pointer(false)
         .define("NDEBUG", None)

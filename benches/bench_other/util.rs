@@ -97,7 +97,7 @@ pub fn bench_fn<T: Ord + std::fmt::Debug>(
     let bench_name_hot = format!("{bench_name}-hot-{transform_name}-{pattern_name}-{test_size}");
     if is_bench_name_ok(&bench_name_hot) {
         c.bench_function(&bench_name_hot, |b| {
-            b.iter_batched(
+            b.iter_batched_ref(
                 || transform(pattern_provider(test_size)),
                 |mut test_data| {
                     test_fn(black_box(test_data.as_mut_slice()));
