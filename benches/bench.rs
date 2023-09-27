@@ -517,6 +517,26 @@ fn bench_patterns<T: Ord + std::fmt::Debug>(
             pattern_provider,
             unstable::rust_v3ips4o_rs::SortImpl,
         );
+        #[cfg(feature = "rust_ips4o_rs")]
+        bench_impl(
+            c,
+            test_size,
+            transform_name,
+            &transform,
+            pattern_name,
+            pattern_provider,
+            unstable::rust_ips4o_par::SortImpl,
+        );
+        #[cfg(feature = "rust_ips4o_rs")]
+        bench_impl(
+            c,
+            test_size,
+            transform_name,
+            &transform,
+            pattern_name,
+            pattern_provider,
+            unstable::rust_v3ips4o_par::SortImpl,
+        );
 
         // --- Unstable sorts ---
 
