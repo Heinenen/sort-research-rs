@@ -34,6 +34,24 @@ where
     (0..size).map(|_| dist.sample(&mut rng)).collect()
 }
 
+pub fn ascending_saw(size: usize, saw_count: usize) -> Vec<i32> {
+    //   .:  .:
+    // .:::.:::
+
+    if size == 0 {
+        return Vec::new();
+    }
+
+    let mut vals = random_vec(size);
+    let chunks_size = (size / saw_count.max(1)).max(1);
+
+    for chunk in vals.chunks_mut(chunks_size) {
+        chunk.sort();
+    }
+
+    vals
+}
+
 pub fn random_zipf(size: usize, exponent: f64) -> Vec<i32> {
     // https://en.wikipedia.org/wiki/Zipf's_law
     let mut rng = rand::rngs::StdRng::from(new_seed());

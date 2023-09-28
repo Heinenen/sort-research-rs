@@ -9,7 +9,7 @@ use criterion::{black_box, criterion_group, criterion_main, Criterion};
 #[allow(unused_imports)]
 use sort_test_tools::ffi_types::{FFIOneKiloByte, FFIString, F128};
 
-use sort_test_tools::patterns::{self, random_s_x_percent};
+use sort_test_tools::patterns::{self, random_s_x_percent, ascending_saw};
 
 // use sort_test_tools::patterns;
 
@@ -289,6 +289,11 @@ fn bench_patterns<T: Ord + std::fmt::Debug>(
         ("random__div8", |len| {
             patterns::random_uniform(len, 0..=(((len as f64 / 3.0).round()) as i32))
         }),
+
+        ("saw_ascending_4", |len| ascending_saw(len, 4)),
+        ("saw_ascending_8", |len| ascending_saw(len, 8)),
+        ("saw_ascending_16", |len| ascending_saw(len, 16)),
+
         ("random_d2", |len| patterns::random_uniform(len, 0..2)),
         ("random_d3", |len| patterns::random_uniform(len, 0..3)),
         ("random_d4", |len| patterns::random_uniform(len, 0..4)),
