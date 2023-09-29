@@ -20,6 +20,7 @@ pub mod rust_v3ips4o_rs;
 pub mod rust_ips4o_par;
 #[cfg(feature = "rust_ips4o_rs")]
 pub mod rust_v3ips4o_par;
+pub mod cpp_ips4o_par;
 
 // Call pdqsort sort via FFI.
 #[cfg(feature = "cpp_pdqsort")]

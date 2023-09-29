@@ -565,6 +565,16 @@ fn bench_patterns<T: Ord + std::fmt::Debug>(
             unstable::rust_std::SortImpl,
         );
 
+        bench_impl(
+            c,
+            test_size,
+            transform_name,
+            &transform,
+            pattern_name,
+            pattern_provider,
+            unstable::cpp_ips4o_par::SortImpl,
+        );
+
         #[cfg(feature = "rust_dmsort")]
         bench_impl(
             c,

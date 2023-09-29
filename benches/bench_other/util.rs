@@ -8,6 +8,7 @@ use criterion::{black_box, BatchSize, Criterion};
 use once_cell::sync::OnceCell;
 
 pub fn pin_thread_to_core() {
+    return;
     use std::cell::Cell;
     let pin_core_id: usize = 2;
 

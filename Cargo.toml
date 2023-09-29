@@ -26,6 +26,7 @@ tiny_sort = { version = "1.0", optional = true }
 ips4o_rs = { path = "../ips4o_rs", optional = true }
 v2ips4o_rs = { path = "../v2ips4o_rs", package = "ips4o_rs"}
 v3ips4o_rs = { path = "../v3ips4o_rs", package = "ips4o_rs"}
+ips4o_ffi = { path = "../../ips4o_ffi" }
 sort_test_tools = { path = "sort_test_tools", default-features = false }
 
 [dev-dependencies]
@@ -70,7 +71,7 @@ default = [
     # "cpp_simdsort",
     # "cpp_vqsort",
     # "cpp_intel_avx512",
-    "cpp_ips4o",
+    # "cpp_ips4o",
     # "cpp_blockquicksort",
     # "cpp_gerbens_qsort",
     # "c_crumsort",
